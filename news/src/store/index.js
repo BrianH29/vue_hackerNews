@@ -10,11 +10,21 @@ export const store = new Vuex.Store({
   state : {
     news : [],
     jobs : [],
-    askList : []
+    askList : [],
+    user : {}
   },
   getters : {
     askList(state){
       return state.askList; 
+    },
+    newsList(state){
+      return state.news; 
+    },
+    jobs(state){
+      return state.jobs;
+    },
+    user(state){
+      return state.user
     }
   },
   mutations, 
