@@ -1,7 +1,8 @@
 <template>
   <div>
     <p v-for="ask in askList" :key="ask.id">
-      <a :href="ask.url">{{ ask.title }}</a>
+      <!-- <a :href="ask.url">{{ ask.title }}</a> -->
+      <router-link :to="`/item/${ask.id}`">{{ ask.title }}</router-link>
       <small> {{ ask.time_ago}} by.{{ ask.user }}</small>
     </p>
   </div>
@@ -38,7 +39,7 @@ export default {
     //   .then(response => this.askList = response.data)
     //   .catch(err => console.log(err))
 
-    this.$store.dispatch('FETCH_ASK')
+    this.$store.dispatch('FETCH_ASK');
   }
 }
 </script>
