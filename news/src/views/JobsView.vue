@@ -1,13 +1,17 @@
 <template>
   <div>
-    <!-- <div v-for="job in this.$store.state.jobs" :key="job.id">
-      title : {{ job.title }}
-    </div> -->
-
-    <p v-for="job in jobs" :key="job.id">
-      <a :href="job.url">{{ job.title }}</a>
-      <small> {{ job.time_ago }} link: {{ job.domain }}</small>
-    </p>
+    <ul>
+      <li v-for="job in jobs" :key="job.id" class="post">
+        <p class="job-title">
+          <a :href="job.url" class="job-title">{{ job.title }}</a>
+        </p>
+        <small> 
+          {{ job.time_ago }} 
+          link: <a :href="job.url">{{ job.domain }}</a>
+        </small>
+      </li>
+    </ul>
+  
   </div>
 </template>
 
@@ -25,6 +29,13 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.post{
+  list-style: none;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+.job-title{
+  color:#828282;
+}
 </style>

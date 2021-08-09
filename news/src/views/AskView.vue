@@ -1,10 +1,23 @@
 <template>
   <div>
-    <p v-for="ask in askList" :key="ask.id">
-      <!-- <a :href="ask.url">{{ ask.title }}</a> -->
-      <router-link :to="`/item/${ask.id}`">{{ ask.title }}</router-link>
-      <small> {{ ask.time_ago}} by.{{ ask.user }}</small>
-    </p>
+    <ul>
+      <li v-for="ask in askList" :key="ask.id" class="post">
+        <!-- 포인트 -->
+        <div class="points">
+          {{ ask.points }}
+        </div>
+        <!-- 기타 영역 -->
+        <div>
+          <p class="ask-title">
+            <router-link :to="`/item/${ask.id}`" class="ask-title">{{ ask.title }}</router-link>
+          </p>
+          <small class="line-text"> 
+            {{ ask.time_ago}} 
+            by.<router-link :to="`/user/${ask.user}`">{{ ask.user }}</router-link>
+          </small>
+        </div>
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -44,6 +57,25 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.post{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border-bottom : 1px solid #eee
+}
+.points{
+  width:80px;
+  height:60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #42b883;
+}
+.ask-title{
+  margin: 0; 
+}
+.line-text{
+  color:#828282
+}
 </style>
