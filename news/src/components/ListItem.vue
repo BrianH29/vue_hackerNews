@@ -1,22 +1,22 @@
 <template>
   <div>
     <ul class="news-list">
-      <li v-for="job in jobs" :key="job.id" class="post">
+      <li v-for="news in newsList" :key="news.id" class="post">
+        <!-- 포인트 영역 -->
         <div class="points">
-          {{ job.points || 0}}
+          {{ news.points }}
         </div>
+        <!-- 기타 영역 -->
         <div>
           <p class="news-title">
-            <a :href="job.url" class="news-title">{{ job.title }}</a>
+            <a v-bind:href="news.url">{{ news.title }}</a>
           </p>
-          <small class="line-text"> 
-            {{ job.time_ago }} 
-            link: <a :href="job.url" class="line-text">{{ job.domain }}</a>
+          <small class="link-text">
+            by.<router-link v-bind:to="`/user/${news.user}`" class="link-text">{{ news.user }}</router-link>
           </small>
         </div>
       </li>
     </ul>
-  
   </div>
 </template>
 
@@ -24,17 +24,16 @@
 import { mapGetters } from 'vuex';
 
 export default {
-  computed : {
-    ...mapGetters(['jobs'])
+  computed: {
+    ...mapGetters(['newsList'])
   },
   created(){
-    //let vm = this; // 콜백 자체가 this 바인딩이 현재 vue instance 를 바라보고 있지 않기 때문에 변수로 한번 받아주기
-    this.$store.dispatch('FETCH_JOBS');
-  }
+    this.$store.dispatch('FETCH_NEWS');
+  },
 }
 </script>
 
-<style scoped>
+<style>
 .news-list{
   margin:0;
   padding:0;
