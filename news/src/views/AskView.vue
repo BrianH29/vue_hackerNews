@@ -1,22 +1,6 @@
 <template>
   <div>
     <list-item></list-item>
-    <!-- <ul class="news-list">
-      <li v-for="ask in askList" :key="ask.id" class="post">
-        <div class="points">
-          {{ ask.points }}
-        </div>
-        <div>
-          <p class="news-title">
-            <router-link :to="`/item/${ask.id}`" class="news-title">{{ ask.title }}</router-link>
-          </p>
-          <small class="line-text"> 
-            {{ ask.time_ago}} 
-            by.<router-link :to="`/user/${ask.user}`" class="line-text">{{ ask.user }}</router-link>
-          </small>
-        </div>
-      </li>
-    </ul> -->
   </div>
 </template>
 

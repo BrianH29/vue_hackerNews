@@ -1,18 +1,31 @@
 <template>
   <div>
     <ul class="news-list">
-      <li v-for="news in newsList" :key="news.id" class="post">
+      <li v-for="item in listItems" :key="item.id" class="post">
         <!-- 포인트 영역 -->
         <div class="points">
-          {{ news.points }}
+          {{ item.points || 0 }}
         </div>
         <!-- 기타 영역 -->
         <div>
-          <p class="news-title">
-            <a v-bind:href="news.url">{{ news.title }}</a>
+          <!-- 타이틀 영역 -->
+          <p class="item-title">
+            <template v-if="item.domain">
+              <a v-bind:href="item.url">{{ item.title }}</a>
+            </template>
+            <template v-else>
+              <router-link :to="`/item/${item.id}`" class="item-title">{{ item.title }}</router-link>
+            </template>
           </p>
           <small class="link-text">
-            by.<router-link v-bind:to="`/user/${news.user}`" class="link-text">{{ news.user }}</router-link>
+            {{ item.time_ago }}
+            <router-link v-if="item.user"
+              v-bind:to="`/user/${item.user}`" class="link-text">by. {{ item.user }}
+            </router-link>
+            <a :href="item.url" v-else>
+              link : {{ item.domain }}
+            </a>
+
           </small>
         </div>
       </li>
@@ -25,10 +38,31 @@ import { mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters(['newsList'])
+    //...mapGetters(['newsList', 'jobs'])
+    listItems() {
+      const name = this.$route.name;
+      if(name === 'news'){
+        console.log(this.$store.state.news)
+        return this.$store.state.news;
+      } else if (name === 'ask'){
+        return this.$store.state.askList;
+      } else if (name === 'jobs') {
+        return this.$store.state.jobs;
+      }
+    }
   },
   created(){
-    this.$store.dispatch('FETCH_NEWS');
+    //this.$store.dispatch('FETCH_NEWS');
+    //console.log("created", this.$route)
+
+    const name = this.$route.name;
+    if(name === 'news'){
+      this.$store.dispatch('FETCH_NEWS');
+    } else if (name === 'ask'){
+      this.$store.dispatch('FETCH_ASK');
+    } else if (name === 'jobs') {
+      this.$store.dispatch('FETCH_JOBS'); 
+    }
   },
 }
 </script>
@@ -54,7 +88,7 @@ export default {
   justify-content: center;
   color: #42b883;
 }
-.news-title{
+.item-title{
   margin:0;
 
 }

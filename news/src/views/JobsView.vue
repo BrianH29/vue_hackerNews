@@ -1,65 +1,15 @@
 <template>
   <div>
-    <ul class="news-list">
-      <li v-for="job in jobs" :key="job.id" class="post">
-        <div class="points">
-          {{ job.points || 0}}
-        </div>
-        <div>
-          <p class="news-title">
-            <a :href="job.url" class="news-title">{{ job.title }}</a>
-          </p>
-          <small class="line-text"> 
-            {{ job.time_ago }} 
-            link: <a :href="job.url" class="line-text">{{ job.domain }}</a>
-          </small>
-        </div>
-      </li>
-    </ul>
-  
+    <list-item></list-item>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import ListItem from '../components/ListItem.vue';
 
 export default {
-  computed : {
-    ...mapGetters(['jobs'])
-  },
-  created(){
-    //let vm = this; // 콜백 자체가 this 바인딩이 현재 vue instance 를 바라보고 있지 않기 때문에 변수로 한번 받아주기
-    this.$store.dispatch('FETCH_JOBS');
+  components : {
+    ListItem,
   }
 }
 </script>
-
-<style scoped>
-.news-list{
-  margin:0;
-  padding:0;
-}
-
-.post{
-  list-style: none;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #eee;
-}
-
-.points{
-  width: 80px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #42b883;
-}
-.news-title{
-  margin:0;
-
-}
-.link-text{
-  color: #828292;
-}
-</style>
