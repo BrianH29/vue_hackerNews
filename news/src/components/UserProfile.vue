@@ -8,12 +8,9 @@
 
       <div class="time">
         <slot name="time"></slot>
+        <slot name="karma"></slot>
       </div>
 
-      <slot name="karma"></slot>
-      <!-- <div>{{ info.id }}</div> -->
-      <!-- <router-link :to="`/user/${info.user}`">{{ info.id }}</router-link> -->
-      <!-- <div class="time">{{ info.created }}</div> -->
     </div>
   </div>
 </template>

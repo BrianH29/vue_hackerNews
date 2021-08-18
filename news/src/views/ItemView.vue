@@ -1,19 +1,11 @@
 <template>
   <div>
-    <section>
-      <!-- 질문 상세 정보 -->
-      <!-- <div class="user-container">
-        <div>
-          <i class="fas fa-user"></i>
-        </div>
-        <div class="user-description">
-          <router-link :to="`/user/${item.user}`">{{ item.user }}</router-link>
-          <div class="time">{{ item.time_ago }}</div>
-        </div>
-      </div> -->
       <user-profile :info="item">
-        <div slot="username">{{ item.user }}</div>
-        <template slot="time"> {{ item.time_ago }}</template>
+        <!-- <div slot="username">{{ item.user }}</div> -->
+        <router-link slot="username" :to="`/user/${item.user}`">
+          {{ item.user }}
+        </router-link>
+        <template slot="time"> {{ 'Posted : ' + item.time_ago }}</template>
       </user-profile>
     </section>
 
