@@ -32,14 +32,14 @@ export default {
   //},
   components:{
     ListItem,
-  }
-  // created(){
-  //   //var vm = this;
-  //   // fetchAskList()
-  //   //   .then(response => this.askList = response.data)
-  //   //   .catch(err => console.log(err))
+  },
+  created(){
+    //var vm = this;
+    // fetchAskList()
+    //   .then(response => this.askList = response.data)
+    //   .catch(err => console.log(err))
 
-  //   this.$store.dispatch('FETCH_ASK');
-  // }
+    this.$store.dispatch('FETCH_ASK');
+  }
 }
 </script>

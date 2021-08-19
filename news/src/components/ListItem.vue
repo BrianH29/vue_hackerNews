@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+//import { mapGetters } from 'vuex';
 
 export default {
   computed: {
@@ -42,7 +42,6 @@ export default {
     listItems() {
       const name = this.$route.name;
       if(name === 'news'){
-        console.log(this.$store.state.news)
         return this.$store.state.news;
       } else if (name === 'ask'){
         return this.$store.state.askList;
@@ -51,19 +50,19 @@ export default {
       }
     }
   },
-  created(){
-    //this.$store.dispatch('FETCH_NEWS');
-    //console.log("created", this.$route)
+  // created(){
+  //   //this.$store.dispatch('FETCH_NEWS');
+  //   //console.log("created", this.$route)
 
-    const name = this.$route.name;
-    if(name === 'news'){
-      this.$store.dispatch('FETCH_NEWS');
-    } else if (name === 'ask'){
-      this.$store.dispatch('FETCH_ASK');
-    } else if (name === 'jobs') {
-      this.$store.dispatch('FETCH_JOBS'); 
-    }
-  },
+  //   const name = this.$route.name;
+  //   if(name === 'news'){
+  //     this.$store.dispatch('FETCH_NEWS');
+  //   } else if (name === 'ask'){
+  //     this.$store.dispatch('FETCH_ASK');
+  //   } else if (name === 'jobs') {
+  //     this.$store.dispatch('FETCH_JOBS'); 
+  //   }
+  // },
 }
 </script>
 
