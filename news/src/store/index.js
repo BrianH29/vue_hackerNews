@@ -12,7 +12,8 @@ export const store = new Vuex.Store({
     jobs : [],
     askList : [],
     user : {},
-    item : {}
+    item : {},
+    list: [],
   },
   getters : {
     askList(state){

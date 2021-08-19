@@ -7,6 +7,7 @@
 <script>
 //import { mapGetters, mapState } from 'vuex';
 import ListItem from '../components/ListItem.vue';
+import bus from '../utils/bus'
 
 export default {
   // computed: {
@@ -33,13 +34,17 @@ export default {
   components:{
     ListItem,
   },
-  created(){
-    //var vm = this;
-    // fetchAskList()
-    //   .then(response => this.askList = response.data)
-    //   .catch(err => console.log(err))
+  // created(){
+  //   //var vm = this;
+  //   // fetchAskList()
+  //   //   .then(response => this.askList = response.data)
+  //   //   .catch(err => console.log(err))
 
-    this.$store.dispatch('FETCH_ASK');
-  }
+  //   bus.$emit('start:spinner');
+
+  //   this.$store.dispatch('FETCH_ASK')
+  //     .then(() => bus.$emit('end:spinner'))
+  //     .catch(err => console.log(err));
+  // }
 }
 </script>
