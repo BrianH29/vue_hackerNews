@@ -8,23 +8,11 @@ Vue.use(Vuex);
 //vuex 상태 관리 도구 
 export const store = new Vuex.Store({
   state : {
-    news : [],
-    jobs : [],
-    askList : [],
     user : {},
     item : {},
     list: [],
   },
   getters : {
-    askList(state){
-      return state.askList; 
-    },
-    newsList(state){
-      return state.news; 
-    },
-    jobs(state){
-      return state.jobs;
-    },
     user(state){
       return state.user
     },
