@@ -8,6 +8,7 @@ Vue.use(Vuex);
 //vuex 상태 관리 도구 
 export const store = new Vuex.Store({
   state : {
+    news : {},
     user : {},
     item : {},
     list: [],
